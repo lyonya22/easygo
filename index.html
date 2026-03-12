@@ -3,58 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eazy Go | Feel the Power</title>
+    <title>Eazy Go | Аренда Электробайков</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0a0510; color: white; overflow: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0510; color: white; margin: 0; overflow: hidden; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .text-glow { text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
         
-        /* Стили прелоадера */
+        /* Стили экрана загрузки */
         #loader {
             position: fixed;
             inset: 0;
             background: #0a0510;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 100;
             transition: opacity 0.8s ease, visibility 0.8s;
         }
-
-        .loader-content {
-            text-align: center;
+        .loader-logo {
+            font-size: 3rem;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: -2px;
             animation: pulse 1.5s infinite ease-in-out;
         }
-
         @keyframes pulse {
-            0%, 100% { opacity: 0.3; transform: scale(0.95); filter: blur(2px); }
+            0%, 100% { opacity: 0.2; transform: scale(0.95); filter: blur(2px); }
             50% { opacity: 1; transform: scale(1); filter: blur(0px); }
         }
-
-        /* Убираем скролл, пока грузится */
-        .loaded body { overflow-y: auto; }
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .loader-progress {
+            position: absolute;
+            height: 100%;
+            background: #6d28d9;
+            width: 100%;
+            transform: translateX(-100%);
+            animation: loading 2s infinite ease-in-out;
+        }
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        /* Включаем скролл только после загрузки */
+        .loaded body { overflow-y: auto; overflow-x: hidden; }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
     <div id="loader">
-        <div class="loader-content">
-            <div class="text-5xl font-black italic tracking-tighter uppercase text-glow">Eazy Go</div>
-            <div class="w-48 h-[2px] bg-white/10 mt-4 overflow-hidden relative">
-                <div class="absolute inset-0 bg-purple-600 animate-[loading_2s_infinite]"></div>
-            </div>
+        <div class="loader-logo text-glow">Eazy Go</div>
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
         </div>
     </div>
-
-    <style>
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-    </style>
 
     <div id="main-content">
         <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-black/50 backdrop-blur-lg border-b border-white/5">
@@ -64,37 +77,115 @@
                 <a href="#prices" class="hover:text-purple-500 transition">Тарифы</a>
                 <a href="#contact" class="hover:text-purple-500 transition">Контакты</a>
             </div>
-            <a href="tel:+77008088060" class="px-5 py-2 bg-purple-600 rounded-full text-xs font-black uppercase hover:bg-purple-500 transition shadow-lg shadow-purple-900/40">Арендовать</a>
+            <a href="https://wa.me/77008088060" class="px-5 py-2 bg-purple-600 rounded-full text-xs font-black uppercase hover:bg-purple-500 transition shadow-lg shadow-purple-900/40">Забронировать</a>
         </nav>
 
         <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center px-4 pt-20">
-            <div class="absolute w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10"></div>
+            <div class="absolute w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
             
             <h1 class="text-7xl md:text-[10rem] font-black italic uppercase tracking-tighter leading-none text-center" data-aos="zoom-in">
                 RIDE <span class="text-transparent bg-clip-text bg-gradient-to-b from-purple-400 to-purple-800 text-glow italic">EAZY</span>
             </h1>
             
-            <div class="max-w-4xl w-full mt-[-50px] md:mt-[-100px]" data-aos="fade-up" data-aos-delay="500">
-                <img src="bike.jpg" alt="Eazy Go" class="w-full drop-shadow-[0_35px_50px_rgba(107,33,168,0.5)] transform hover:scale-105 transition duration-1000">
+            <div class="max-w-4xl w-full mt-[-50px] md:mt-[-100px] transition-transform duration-1000 hover:scale-105" 
+                 data-aos="fade-up" 
+                 data-aos-delay="600"
+                 data-aos-duration="1500">
+                <img src="bike.jpg" alt="Eazy Go" class="w-full drop-shadow-[0_35px_50px_rgba(107,33,168,0.5)]">
+            </div>
+
+            <div class="flex flex-col items-center mt-8" data-aos="fade-up" data-aos-delay="1000">
+                <p class="text-gray-400 uppercase tracking-[0.5em] text-xs mb-4">Премиальный электробайк в аренду</p>
+                <div class="h-20 w-[1px] bg-gradient-to-b from-purple-500 to-transparent"></div>
             </div>
         </section>
 
-        </div>
+        <section id="prices" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-20" data-aos="fade-right">
+                    <h2 class="text-5xl font-black italic uppercase tracking-tighter">Выбери время</h2>
+                    <p class="text-purple-500 font-bold uppercase tracking-widest text-sm mt-2">Никаких скрытых комиссий</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
+                        <span class="text-[10px] font-black uppercase text-purple-400 tracking-widest">Первым клиентам</span>
+                        <div class="text-5xl font-black my-4 tracking-tighter">9 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                        <p class="text-gray-500 text-sm mb-8">Идеальный тест-драйв для знакомства с городом.</p>
+                        <button class="w-full py-4 rounded-2xl bg-white text-black font-black uppercase text-xs group-hover:bg-purple-500 group-hover:text-white transition">Взять тест</button>
+                    </div>
+
+                    <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
+                        <span class="text-[10px] font-black uppercase text-gray-500 tracking-widest">1 Неделя</span>
+                        <div class="text-5xl font-black my-4 tracking-tighter">18 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                        <p class="text-gray-500 text-sm mb-8">Для тех, кто ценит мобильность каждый день.</p>
+                        <button class="w-full py-4 rounded-2xl border border-white/10 font-black uppercase text-xs group-hover:bg-purple-500 transition">Выбрать</button>
+                    </div>
+
+                    <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group" data-aos="fade-up" data-aos-delay="300">
+                        <span class="text-[10px] font-black uppercase text-gray-500 tracking-widest">2 Недели</span>
+                        <div class="text-5xl font-black my-4 tracking-tighter">35 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                        <p class="text-gray-500 text-sm mb-8">Максимальная выгода для работы и отдыха.</p>
+                        <button class="w-full py-4 rounded-2xl border border-white/10 font-black uppercase text-xs group-hover:bg-purple-500 transition">Выбрать</button>
+                    </div>
+
+                    <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group border-purple-500/50 relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                        <div class="absolute top-0 right-0 bg-purple-500 px-4 py-1 text-[10px] font-black uppercase italic">Top</div>
+                        <span class="text-[10px] font-black uppercase text-gray-500 tracking-widest">1 Месяц</span>
+                        <div class="text-5xl font-black my-4 tracking-tighter">74 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                        <p class="text-gray-500 text-sm mb-8">Полная свобода. Забудь про транспорт.</p>
+                        <button class="w-full py-4 rounded-2xl border border-white/10 font-black uppercase text-xs group-hover:bg-purple-500 transition">Выбрать</button>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex items-center gap-4 opacity-30">
+                    <div class="h-[1px] flex-grow bg-white"></div>
+                    <div class="text-[10px] uppercase font-black tracking-[0.3em]">Strictly 18+ Only</div>
+                    <div class="h-[1px] flex-grow bg-white"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="bg-white text-black py-24 px-6 rounded-t-[60px]">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-6xl md:text-8xl font-black italic uppercase tracking-tighter leading-none mb-8">Ready to<br>go?</h2>
+                    <p class="text-xl font-medium max-w-sm">Забирай свой байк на Восток 66 и начни движение сегодня.</p>
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="space-y-12">
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Локация</p>
+                            <p class="text-3xl font-black uppercase italic">Шымкент, Восток 66</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Связаться</p>
+                            <a href="tel:+77008088060" class="text-3xl font-black hover:text-purple-600 transition tracking-tighter">+7 700 808 8060</a>
+                        </div>
+                    </div>
+                    <div class="mt-16 pt-8 border-t border-black/10 flex justify-between items-end">
+                        <div class="text-4xl font-black italic tracking-tighter">EAZY GO</div>
+                        <div class="text-[10px] font-bold uppercase opacity-40">© 2026 Mobility Labs</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Инициализация анимаций скролла
-        AOS.init({ duration: 1200, once: false });
+        // Инициализация AOS
+        AOS.init();
 
-        // Скрипт для прелоадера
+        // Скрипт загрузки
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
                 loader.style.visibility = 'hidden';
                 document.documentElement.classList.add('loaded');
-                document.body.style.overflowY = 'auto'; // Включаем скролл после загрузки
-            }, 1500); // Задержка 1.5 сек для красоты
+                document.body.style.overflowY = 'auto';
+            }, 1800); // Держим загрузку 1.8 сек для пафоса
         });
     </script>
 </body>
