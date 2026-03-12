@@ -12,7 +12,10 @@
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.5s ease; }
         .text-glow { text-shadow: 0 0 20px rgba(168, 85, 247, 0.8); }
         
-        /* Экран загрузки */
+        /* Анимации */
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.1; transform: scale(0.9); } 50% { opacity: 0.3; transform: scale(1); } }
+        .animate-pulse-slow { animation: pulse-slow 8s infinite ease-in-out; }
+
         #loader {
             position: fixed; inset: 0; background: #0a0510; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 100; transition: opacity 0.8s ease, visibility 0.8s;
@@ -25,7 +28,6 @@
         
         .loaded body { overflow-y: auto; overflow-x: hidden; }
 
-        /* Красивые кнопки в тарифах */
         .price-btn {
             position: relative;
             overflow: hidden;
@@ -45,7 +47,6 @@
             transform: translateY(-5px);
         }
 
-        /* Главная кнопка */
         .btn-glow { box-shadow: 0 0 20px rgba(109, 40, 217, 0); transition: all 0.3s ease; }
         .btn-glow:hover { box-shadow: 0 0 30px rgba(109, 40, 217, 0.6); transform: scale(1.05); }
     </style>
@@ -69,12 +70,24 @@
         </nav>
 
         <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center px-4 pt-20">
-            <div class="absolute w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+            <div class="absolute w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[150px] -z-10 animate-pulse-slow"></div>
+            
             <h1 class="text-7xl md:text-[10rem] font-black italic uppercase tracking-tighter leading-none text-center" data-aos="zoom-in">
                 RIDE <span class="text-transparent bg-clip-text bg-gradient-to-b from-purple-400 to-purple-800 text-glow italic">EAZY</span>
             </h1>
-            <div class="max-w-4xl w-full mt-[-50px] md:mt-[-100px]" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1500">
-                <img src="bike.jpg" alt="Eazy Go" class="w-full drop-shadow-[0_35px_50px_rgba(107,33,168,0.5)] transition-transform duration-1000 hover:scale-105">
+            
+            <div class="max-w-5xl w-full mt-[-50px] md:mt-[-120px] relative" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1800">
+                <div class="glass p-3 rounded-[50px] border border-white/10 relative z-10 overflow-hidden">
+                    <img src="bike.jpg" alt="Eazy Go" class="w-full drop-shadow-[0_15px_40px_rgba(168,85,247,0.4)] transition-transform duration-700 hover:scale-105">
+                    
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-4/5 h-10 bg-black/60 rounded-full blur-[25px] -z-10"></div>
+                </div>
+                <div class="absolute inset-[-30px] bg-purple-700/15 rounded-[80px] blur-[60px] -z-10"></div>
+            </div>
+
+            <div class="flex flex-col items-center mt-12" data-aos="fade-up" data-aos-delay="1200">
+                <p class="text-gray-500 uppercase tracking-[0.4em] text-[10px] font-bold">Premium Electric Mobility</p>
+                <div class="h-16 w-[1px] bg-gradient-to-b from-purple-500 to-transparent mt-4 opacity-30"></div>
             </div>
         </section>
 
@@ -146,7 +159,7 @@
                         </div>
                     </div>
                     <div class="mt-16 pt-8 border-t border-black/10 flex justify-between items-end">
-                        <div class="text-4xl font-black italic tracking-tighter uppercase italic">EAZY GO</div>
+                        <div class="text-4xl font-black italic tracking-tighter uppercase italic text-glow">EAZY GO</div>
                         <div class="text-[10px] font-bold uppercase opacity-40">© 2026 Mobility Labs</div>
                     </div>
                 </div>
