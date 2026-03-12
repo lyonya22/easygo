@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eazy Go | Аренда Электробайков</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0510; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .purple-gradient { background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%); }
+        .text-glow { text-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-black/50 backdrop-blur-lg border-b border-white/5">
+        <div class="text-2xl font-black italic tracking-tighter uppercase">Eazy Go</div>
+        <div class="space-x-8 hidden md:block text-xs font-bold uppercase tracking-widest">
+            <a href="#hero" class="hover:text-purple-500 transition">Старт</a>
+            <a href="#prices" class="hover:text-purple-500 transition">Тарифы</a>
+            <a href="#contact" class="hover:text-purple-500 transition">Контакты</a>
+        </div>
+        <a href="https://wa.me/77008088060" class="px-5 py-2 bg-purple-600 rounded-full text-xs font-black uppercase hover:bg-purple-500 transition">Забронировать</a>
+    </nav>
+
+    <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center px-4 pt-20">
+        <div class="absolute w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+        
+        <h1 class="text-7xl md:text-[10rem] font-black italic uppercase tracking-tighter leading-none text-center">
+            RIDE <span class="text-transparent bg-clip-text bg-gradient-to-b from-purple-400 to-purple-800 text-glow">EAZY</span>
+        </h1>
+        
+        <div class="max-w-4xl w-full mt-[-50px] md:mt-[-100px] transition-transform duration-1000 hover:scale-105">
+            <img src="https://i.ibb.co/Vp8pXQk/photo-2026-03-13-02-16-03.jpg" alt="Eazy Go" class="w-full drop-shadow-[0_35px_50px_rgba(107,33,168,0.5)]">
+        </div>
+
+        <div class="flex flex-col items-center mt-8">
+            <p class="text-gray-400 uppercase tracking-[0.5em] text-xs mb-4">Премиальный электробайк в аренду</p>
+            <div class="h-20 w-[1px] bg-gradient-to-b from-purple-500 to-transparent"></div>
+        </div>
+    </section>
+
+    <section id="prices" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20">
+                <h2 class="text-5xl font-black italic uppercase italic tracking-tighter">Выбери время</h2>
+                <p class="text-purple-500 font-bold uppercase tracking-widest text-sm mt-2">Никаких скрытых комиссий</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group">
+                    <span class="text-[10px] font-black uppercase text-purple-400 tracking-widest">Первым клиентам</span>
+                    <div class="text-5xl font-black my-4 tracking-tighter">9 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                    <p class="text-gray-500 text-sm mb-8">Идеальный тест-драйв для знакомства с городом.</p>
+                    <button class="w-full py-4 rounded-2xl bg-white text-black font-black uppercase text-xs group-hover:bg-purple-500 group-hover:text-white transition">Взять тест</button>
+                </div>
+
+                <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group">
+                    <span class="text-[10px] font-black uppercase text-gray-500 tracking-widest">1 Неделя</span>
+                    <div class="text-5xl font-black my-4 tracking-tighter">18 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                    <p class="text-gray-500 text-sm mb-8">Для тех, кто ценит мобильность каждый день.</p>
+                    <button class="w-full py-4 rounded-2xl border border-white/10 font-black uppercase text-xs group-hover:bg-purple-500 transition">Выбрать</button>
+                </div>
+
+                <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group">
+                    <span class="text-[10px] font-black uppercase text-gray-500 tracking-widest">2 Недели</span>
+                    <div class="text-5xl font-black my-4 tracking-tighter">35 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                    <p class="text-gray-500 text-sm mb-8">Максимальная выгода для работы и отдыха.</p>
+                    <button class="w-full py-4 rounded-2xl border border-white/10 font-black uppercase text-xs group-hover:bg-purple-500 transition">Выбрать</button>
+                </div>
+
+                <div class="glass p-8 rounded-[40px] hover:border-purple-500 transition-all duration-500 group border-purple-500/50 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-purple-500 px-4 py-1 text-[10px] font-black uppercase italic">Top</div>
+                    <span class="text-[10px] font-black uppercase text-gray-500 tracking-widest">1 Месяц</span>
+                    <div class="text-5xl font-black my-4 tracking-tighter">74 900<span class="text-sm ml-1 font-normal opacity-50">₸</span></div>
+                    <p class="text-gray-500 text-sm mb-8">Полная свобода. Забудь про общественный транспорт.</p>
+                    <button class="w-full py-4 rounded-2xl border border-white/10 font-black uppercase text-xs group-hover:bg-purple-500 transition">Выбрать</button>
+                </div>
+            </div>
+
+            <div class="mt-12 flex items-center gap-4 opacity-30">
+                <div class="h-[1px] flex-grow bg-white"></div>
+                <div class="text-[10px] uppercase font-black tracking-[0.3em]">Strictly 18+ Only</div>
+                <div class="h-[1px] flex-grow bg-white"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-white text-black py-24 px-6 rounded-t-[60px]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-6xl md:text-8xl font-black italic uppercase tracking-tighter leading-none mb-8">Ready to<br>go?</h2>
+                <p class="text-xl font-medium max-w-sm">Забирай свой байк на Восток 66 и начни движение сегодня.</p>
+            </div>
+            <div class="flex flex-col justify-between">
+                <div class="space-y-12">
+                    <div>
+                        <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Локация</p>
+                        <p class="text-3xl font-black uppercase italic">Шымкент, Восток 66</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Связаться</p>
+                        <a href="tel:+77008088060" class="text-3xl font-black hover:text-purple-600 transition tracking-tighter">+7 700 808 8060</a>
+                    </div>
+                </div>
+                <div class="mt-16 pt-8 border-t border-black/10 flex justify-between items-end">
+                    <div class="text-4xl font-black italic tracking-tighter italic">EAZY GO</div>
+                    <div class="text-[10px] font-bold uppercase opacity-40">© 2026 Mobility Labs</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
